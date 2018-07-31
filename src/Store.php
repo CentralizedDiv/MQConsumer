@@ -1,14 +1,14 @@
 <?php
-class Store {
+class Store implements IStore{
     public static function getMessages(){
-        $messages = file_get_contents(__DIR__.'./assets/messages.json');
+        $messages = file_get_contents(__DIR__.'/assets/messages.json');
         return json_decode($messages, true);
     }
 
     public static function addMessage($newMessage) {
         $messages = self::getMessages();
         array_push($messages, $newMessage);
-        file_put_contents(__DIR__.'./assets/messages.json', json_encode($messages));
+        file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 
     public static function removeMessage($id) {
@@ -19,7 +19,7 @@ class Store {
                 $messages = array_values($messages);
             }
         }
-        file_put_contents(__DIR__.'./assets/messages.json', json_encode($messages));
+        file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 
     public static function changeMessage($msgToChange) {
@@ -29,10 +29,10 @@ class Store {
                 $messages[$key] = $msgToChange;
             }
         }
-        file_put_contents(__DIR__.'./assets/messages.json', json_encode($messages));
+        file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 
     public static function setMessages($messages) {
-        file_put_contents(__DIR__.'./assets/messages.json', json_encode($messages));
+        file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 }

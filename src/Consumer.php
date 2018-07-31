@@ -1,15 +1,14 @@
 <?php
 class Consumer {
-    public function consume($callback) {
+    public function consume($callback, $filter = array()) {
+        gc_enable();
         while(true) {
-            $queue = Store::getMessages();
+            $queue = Store::getMessages($filter);
             if(is_array($queue)) {
                 foreach($queue as $msg) {
                     $msg['consuming'] = true;
                     $msg['consumer'] = $this;
-                    while($msg['consuming'] !== false) {
-                        call_user_func_array($callback, array(&$msg));    
-                    }
+                    call_user_func_array($callback, array(&$msg));    
 
                     if(!isset($msg['removed']))
                         Store::changeMessage($msg);
@@ -19,6 +18,7 @@ class Consumer {
                     }
                 }
             }
+            gc_collect_cycles();
         }
     }
 

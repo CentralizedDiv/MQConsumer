@@ -8,6 +8,7 @@ $callbackConsumer = function(&$msg) {
         rsort($msgs);
         return $msgs;
     };
+    
     if(strpos($msg['message'], 'TO_ACCEPT') !== false) {
         $msg['consumer']->accept($msg);
         var_dump($msg['message']); 
