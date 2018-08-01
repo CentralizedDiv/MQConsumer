@@ -47,7 +47,7 @@ $callbackConsumer = function(&$msg) {
 ```
 4. Start the Consumer
 ```php
-//You have to give your Store Class
+//You have to pass your Store Class's namespace as parameter to the Consumer's constructor
 $consumer = new Consumer('\MQConsumer\examples\Store');
 $consumer->consume($callbackConsumer);
 ```
