@@ -59,7 +59,7 @@ class Consumer {
         
         //If true, remove; if callable, call the requeue function 
         if($requeue === true){
-            $this->storeClass->removeMessage($msg['id']);
+            $this->storeClass->removeMessage($msg);
             $msg['removed'] = true;
             $msg['requeued'] = false;  
         }else if(is_callable($requeue)) {
@@ -83,7 +83,7 @@ class Consumer {
         
         //If true, remove; if callable, call the requeue function 
         if($requeue === true){
-            $this->storeClass->removeMessage($msg['id']);
+            $this->storeClass->removeMessage($msg);
             $msg['removed'] = true;
             $msg['requeued'] = false;  
         }else if(is_callable($requeue)) {
