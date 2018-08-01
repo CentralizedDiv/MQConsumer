@@ -3,7 +3,7 @@ PHP Lib to implement a 'Message Queue Consumer' that provides a big liberty to m
 
 ## How to use
 This is how you can use MQ Consumer:
-1. Implements Store class.
+1. Implement a Store class, based on 'StoreInterface'.
 ```php
 class Store implements StoreInterface{
     public function getMessages($filter = array()){
@@ -17,7 +17,7 @@ class Store implements StoreInterface{
     .
 }
 ```
-2. Create a Producer class that comunicate with you Store Class, to insert and manipulate messages.
+2. Create a Producer class that comunicate with your Store class, to insert and manipulate messages.
 ```php
 class Producer {
     public function insertMessage($id, $message){
