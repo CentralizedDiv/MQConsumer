@@ -30,7 +30,7 @@ class Consumer {
                     $msg['consuming'] = true;
                     $msg['consumer'] = $this;
                     call_user_func_array($callback, array(&$msg));    
-
+                    unset($msg['consumer']);
                     //if the message wasnt removed, update it
                     if(!isset($msg['removed']))
                         $this->storeClass->updateMessage($msg);
@@ -65,6 +65,8 @@ class Consumer {
         }else if(is_callable($requeue)) {
             $this->callRequeueFunction($requeue);
             $msg['requeued'] = true;     
+        }else {
+            $msg['requeued'] = false;      
         }
     }
 
@@ -87,6 +89,8 @@ class Consumer {
         }else if(is_callable($requeue)) {
             $this->callRequeueFunction($requeue);
             $msg['requeued'] = true;
+        }else {
+            $msg['requeued'] = false;  
         }
     }
 
