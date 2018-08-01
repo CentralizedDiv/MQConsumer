@@ -1,6 +1,6 @@
 <?php
-namespace MessageQueue\examples;
-use MessageQueue\src\StoreInterface;
+namespace MQConsumer\examples;
+use MQConsumer\src\StoreInterface;
 //use ...\Mongo;
 
 /* Example of Store class using MongoDB */

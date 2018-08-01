@@ -1,7 +1,7 @@
 <?php
-namespace MessageQueue\examples;
+namespace MQConsumer\examples;
 
-use MessageQueue\examples\Store;
+use MQConsumer\examples\Store;
 
 /* Example of producer */
 class Producer {

@@ -1,6 +1,6 @@
 <?php
-namespace MessageQueue\examples;
-use MessageQueue\src\StoreInterface;
+namespace MQConsumer\examples;
+use MQConsumer\src\StoreInterface;
 
 /* Example of Store class using file */
 class Store implements StoreInterface{

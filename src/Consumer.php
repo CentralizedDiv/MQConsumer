@@ -1,5 +1,5 @@
 <?php
-namespace MessageQueue\src;
+namespace MQConsumer\src;
 
 class Consumer {
     

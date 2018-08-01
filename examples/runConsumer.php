@@ -1,8 +1,8 @@
 <?php
 require_once ('../__autoload.php');
-use MessageQueue\src\Consumer;
+use MQConsumer\src\Consumer;
 
-$consumer = new Consumer('\MessageQueue\examples\Store');
+$consumer = new Consumer('\MQConsumer\examples\Store');
 
 /* Example of callbackConsumer function */
 $callbackConsumer = function(&$msg) {
