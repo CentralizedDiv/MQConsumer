@@ -1,9 +1,13 @@
 <?php
-require_once ('./autoload.php');
-$consumer = new Consumer();
+require_once ('../__autoload.php');
+use MessageQueue\src\Consumer;
 
+$consumer = new Consumer('\MessageQueue\examples\Store');
+
+/* Example of callbackConsumer function */
 $callbackConsumer = function(&$msg) {
     
+    /* Example of requeue function */
     $callbackRequeue = function(&$msgs) {
         rsort($msgs);
         return $msgs;

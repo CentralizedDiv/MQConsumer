@@ -1,18 +1,22 @@
 <?php
-class Store implements IStore{
-    public static function getMessages(){
+namespace MessageQueue\examples;
+use MessageQueue\src\StoreInterface;
+
+/* Example of Store class using file */
+class Store implements StoreInterface{
+    public function getMessages($filter = array()){
         $messages = file_get_contents(__DIR__.'/assets/messages.json');
         return json_decode($messages, true);
     }
 
-    public static function addMessage($newMessage) {
-        $messages = self::getMessages();
+    public function insertMessage($newMessage) {
+        $messages = $this->getMessages();
         array_push($messages, $newMessage);
         file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 
-    public static function removeMessage($id) {
-        $messages = self::getMessages();
+    public function removeMessage($id) {
+        $messages = $this->getMessages();
         foreach($messages as $key => $msg) {
             if($msg['id'] === $id) {
                 unset($messages[$key]);
@@ -22,8 +26,8 @@ class Store implements IStore{
         file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 
-    public static function changeMessage($msgToChange) {
-        $messages = self::getMessages();
+    public function updateMessage($msgToChange) {
+        $messages = $this->getMessages();
         foreach($messages as $key => $msg) {
             if($msg['id'] === $msgToChange['id']) {
                 $messages[$key] = $msgToChange;
@@ -32,7 +36,7 @@ class Store implements IStore{
         file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 
-    public static function setMessages($messages) {
+    public function setMessages($messages) {
         file_put_contents(__DIR__.'/assets/messages.json', json_encode($messages));
     }
 }
