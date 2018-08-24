@@ -10,8 +10,8 @@ class Consumer {
      * 
      * @param string    $storeClass     Namespace of the implemented StoreInterface class.
      */
-    public function __construct($storeClass) {
-        $this->storeClass = new $storeClass();
+    public function __construct($storeClass, $args = array()) {
+        $this->storeClass = (new \ReflectionClass($storeClass))->newInstanceArgs($args);
     }
     
     /**
