@@ -9,6 +9,7 @@ class Consumer {
      * Constructor
      * 
      * @param string    $storeClass     Namespace of the implemented StoreInterface class.
+     * @param array     $args           Parameters received by your Store class.
      */
     public function __construct($storeClass, $args = array()) {
         $this->storeClass = (new \ReflectionClass($storeClass))->newInstanceArgs($args);
